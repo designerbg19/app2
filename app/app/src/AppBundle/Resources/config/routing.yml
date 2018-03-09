@@ -1,0 +1,4 @@
+app_etacmd:
+    resource: "@AppBundle/Resources/config/routing/etacmd.yml"
+    prefix:   /etacmd
+

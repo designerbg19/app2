@@ -1,0 +1,42 @@
+etacmd:
+    path:  /
+    defaults: { _controller: "AppBundle:EtaCmd:index" }
+
+etacmd_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:EtaCmd:show" }
+
+etacmd_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:EtaCmd:new" }
+
+etacmd_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:EtaCmd:create" }
+    requirements: { _method: post }
+
+etacmd_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:EtaCmd:edit" }
+
+etacmd_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:EtaCmd:update" }
+    requirements: { _method: post|put }
+
+etacmd_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:EtaCmd:delete" }
+    requirements: { _method: post|delete }
+    
+etacmd_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:EtaCmd:deleteById" }
+    requirements: { _method: get }
+    
+
+etacmd_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:EtaCmd:bulk" }
+    requirements: { _method: post }
+    
