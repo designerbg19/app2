@@ -1,0 +1,42 @@
+ville:
+    path:  /
+    defaults: { _controller: "AppBundle:Ville:index" }
+
+ville_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:Ville:show" }
+
+ville_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:Ville:new" }
+
+ville_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Ville:create" }
+    requirements: { _method: post }
+
+ville_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:Ville:edit" }
+
+ville_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:Ville:update" }
+    requirements: { _method: post|put }
+
+ville_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:Ville:delete" }
+    requirements: { _method: post|delete }
+    
+ville_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:Ville:deleteById" }
+    requirements: { _method: get }
+    
+
+ville_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Ville:bulk" }
+    requirements: { _method: post }
+    

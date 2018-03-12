@@ -2,3 +2,10 @@ app_etacmd:
     resource: "@AppBundle/Resources/config/routing/etacmd.yml"
     prefix:   /etacmd
 
+app_ville:
+    resource: "@AppBundle/Resources/config/routing/ville.yml"
+    prefix:   /ville
+
+app_region:
+    resource: "@AppBundle/Resources/config/routing/region.yml"
+    prefix:   /region

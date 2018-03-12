@@ -1,0 +1,42 @@
+region:
+    path:  /
+    defaults: { _controller: "AppBundle:Region:index" }
+
+region_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:Region:show" }
+
+region_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:Region:new" }
+
+region_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Region:create" }
+    requirements: { _method: post }
+
+region_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:Region:edit" }
+
+region_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:Region:update" }
+    requirements: { _method: post|put }
+
+region_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:Region:delete" }
+    requirements: { _method: post|delete }
+    
+region_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:Region:deleteById" }
+    requirements: { _method: get }
+    
+
+region_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Region:bulk" }
+    requirements: { _method: post }
+    
