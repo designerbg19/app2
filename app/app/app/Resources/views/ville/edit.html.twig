@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block title %}
 {{ parent() }} -  Edit ville
 {% endblock %}
@@ -29,21 +28,13 @@
     
 
     {{ form_start(edit_form) }}
-    <div class="form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nom">{{ form_label(edit_form.nom,'nom') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(edit_form.nom ,{'attr':{'class':'form-control' }}) }}
-        </div>
-    </div>
+
     {{ form_widget(edit_form) }}
     <p>
-        <button type="submit"  class="btn btn-success">
+        <button type="submit" class="btn btn-primary">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Update
         </button>
     </p>
-
     {{ form_end(edit_form) }}
 
     <hr/>

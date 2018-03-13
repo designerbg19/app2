@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Ville
+ * Region
  *
- * @ORM\Table(name="ville")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\VilleRepository")
+ * @ORM\Table(name="region")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RegionRepository")
  */
-class Ville
+class Region
 {
     /**
      * @var int
@@ -29,13 +29,9 @@ class Ville
     private $nom;
 
 
-    /**
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Region")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $region;
 
+
+    
 
     /**
      * Get id
@@ -47,13 +43,12 @@ class Ville
         return $this->id;
     }
 
-
     /**
      * Set nom
      *
      * @param string $nom
      *
-     * @return Ville
+     * @return Region
      */
     public function setNom($nom)
     {
@@ -71,29 +66,9 @@ class Ville
     {
         return $this->nom;
     }
+    
+  
 
 
-    /**
-     * Set region
-     *
-     * @param \AppBundle\Entity\Region $region
-     *
-     * @return Ville
-     */
-    public function setRegion(\AppBundle\Entity\Region $region)
-    {
-        $this->region = $region;
 
-        return $this;
-    }
-
-    /**
-     * Get region
-     *
-     * @return \AppBundle\Entity\Region
-     */
-    public function getRegion()
-    {
-        return $this->region;
-    }
 }

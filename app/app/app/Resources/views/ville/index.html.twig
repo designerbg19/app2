@@ -112,11 +112,11 @@
                 <thead>
                     <tr>
                         <th width="20px"><input type="checkbox" class="check-all" onclick="toggleAll(this)"></th>
-
                         {% import "macros/th_sortable.html.twig" as macros %}
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ville')}}</th>
                             <th>{{macros.th_sortable('nom',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'ville')}}</th>
-    
+                            <th>Region</th>
+
                        
                         <th width = "130px">List</th>
                     </tr>
@@ -127,7 +127,8 @@
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{ville.id}}"/></td>
                         <td><a href="{{ path('ville_edit', { 'id': ville.id }) }}">{{ ville.id }}</a></td>
                         <td>{{ ville.nom }}</td>
-    
+                        <td>{{ ville.region.nom }}</td>
+
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('ville_by_id_delete', { 'id': ville.id}) }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

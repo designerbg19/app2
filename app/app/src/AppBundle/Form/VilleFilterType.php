@@ -17,6 +17,10 @@ class VilleFilterType extends AbstractType
             ->add('id', Filters\NumberFilterType::class)
             ->add('nom', Filters\TextFilterType::class)
         
+            ->add('region', Filters\EntityFilterType::class, array(
+                    'class' => 'AppBundle\Entity\Region',
+                    'choice_label' => 'nom',
+            )) 
         ;
         $builder->setMethod("GET");
 

@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VilleType extends AbstractType
@@ -16,6 +17,14 @@ class VilleType extends AbstractType
     {
         $builder
             ->add('nom')
+            ->add('region', EntityType::class, array(
+                'class' => 'AppBundle\Entity\Region',
+                'choice_label' => 'nom',
+                'placeholder' => 'Please choose',
+                'empty_data' => null,
+                'required' => false
+ 
+            )) 
         ;
     }
     
