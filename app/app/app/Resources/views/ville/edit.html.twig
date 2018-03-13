@@ -28,10 +28,33 @@
     
 
     {{ form_start(edit_form) }}
+<div class="x_content">
+<div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Nom">{{ form_label(edit_form.nom,'Nom') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(edit_form.nom ,{'attr':{'class':'form-control' }}) }}
+        </div>
+    </div>  
+</div>
 
-    {{ form_widget(edit_form) }}
+  <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Region">{{ form_label(edit_form.region,'Region') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(edit_form.region ,{'attr':{'class':'form-control' }}) }}
+        </div>
+    </div> 
+
+
+
+
+  {{ form_widget(edit_form) }}
+    
     <p>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-success">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Update
         </button>
     </p>
@@ -39,24 +62,28 @@
 
     <hr/>
 
-    
+   
 <div class="form-group">
+
     <a class="btn btn-default" href="{{ path('ville') }}">
         <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
         Back to list
     </a>
+
     <a class="btn btn-info" href="{{ path('ville_new') }}">
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         New
     </a>
-    <form action="{{ path('ville_delete', { 'id': ville.id }) }}" method="post" style="display: inline-block">
+ 
+    <a form action="{{ path('ville_delete', { 'id': ville.id }) }}" method="post" style="display: inline-block">
         <input type="hidden" name="_method" value="DELETE" />
         {{ form_widget(delete_form) }}
         <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             Delete
         </button>
-    </form>
+    </a>
+    </a>
 </div>
 
 </div>

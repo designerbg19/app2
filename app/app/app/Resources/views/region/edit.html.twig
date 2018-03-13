@@ -29,13 +29,25 @@
     
 
     {{ form_start(edit_form) }}
-
-    {{ form_widget(edit_form) }}
+<div class="x_content">
+<div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12"  for="Nom">{{ form_label(edit_form.nom,'Nom') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(edit_form.nom ,{'attr':{'class':'form-control' }}) }}
+        </div>
     <p>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-success">
             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Update
         </button>
     </p>
+    </div>  
+ 
+</div>
+
+    {{ form_widget(edit_form) }}
+  
     {{ form_end(edit_form) }}
 
     <hr/>
@@ -50,14 +62,14 @@
         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         New
     </a>
-    <form action="{{ path('region_delete', { 'id': region.id }) }}" method="post" style="display: inline-block">
+    <a form action="{{ path('region_delete', { 'id': region.id }) }}" method="post" style="display: inline-block">
         <input type="hidden" name="_method" value="DELETE" />
         {{ form_widget(delete_form) }}
         <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
             Delete
         </button>
-    </form>
+    </a>
 </div>
 
 </div>
