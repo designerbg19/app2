@@ -1,0 +1,42 @@
+modele:
+    path:  /
+    defaults: { _controller: "AppBundle:Modele:index" }
+
+modele_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:Modele:show" }
+
+modele_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:Modele:new" }
+
+modele_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Modele:create" }
+    requirements: { _method: post }
+
+modele_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:Modele:edit" }
+
+modele_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:Modele:update" }
+    requirements: { _method: post|put }
+
+modele_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:Modele:delete" }
+    requirements: { _method: post|delete }
+    
+modele_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:Modele:deleteById" }
+    requirements: { _method: get }
+    
+
+modele_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Modele:bulk" }
+    requirements: { _method: post }
+    

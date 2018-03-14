@@ -13,3 +13,12 @@ app_ville:
 app_modepay:
     resource: "@AppBundle/Resources/config/routing/modepay.yml"
     prefix:   /modepay
+app_marque:
+    resource: "@AppBundle/Resources/config/routing/marque.yml"
+    prefix:   /marque
+app_modele:
+    resource: "@AppBundle/Resources/config/routing/modele.yml"
+    prefix:   /modele
+app_refmodele:
+    resource: "@AppBundle/Resources/config/routing/refmodele.yml"
+    prefix:   /refmodele

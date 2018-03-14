@@ -1,0 +1,42 @@
+marque:
+    path:  /
+    defaults: { _controller: "AppBundle:Marque:index" }
+
+marque_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:Marque:show" }
+
+marque_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:Marque:new" }
+
+marque_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Marque:create" }
+    requirements: { _method: post }
+
+marque_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:Marque:edit" }
+
+marque_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:Marque:update" }
+    requirements: { _method: post|put }
+
+marque_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:Marque:delete" }
+    requirements: { _method: post|delete }
+    
+marque_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:Marque:deleteById" }
+    requirements: { _method: get }
+    
+
+marque_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Marque:bulk" }
+    requirements: { _method: post }
+    

@@ -1,0 +1,42 @@
+refmodele:
+    path:  /
+    defaults: { _controller: "AppBundle:RefModele:index" }
+
+refmodele_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:RefModele:show" }
+
+refmodele_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:RefModele:new" }
+
+refmodele_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:RefModele:create" }
+    requirements: { _method: post }
+
+refmodele_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:RefModele:edit" }
+
+refmodele_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:RefModele:update" }
+    requirements: { _method: post|put }
+
+refmodele_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:RefModele:delete" }
+    requirements: { _method: post|delete }
+    
+refmodele_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:RefModele:deleteById" }
+    requirements: { _method: get }
+    
+
+refmodele_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:RefModele:bulk" }
+    requirements: { _method: post }
+    

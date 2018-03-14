@@ -28,7 +28,12 @@ class Modele
      */
     private $libelle;
 
-
+  /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RefModele")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $refmodele;
     /**
      * Get id
      *

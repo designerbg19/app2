@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Marque
+ * RefModele
  *
- * @ORM\Table(name="marque")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MarqueRepository")
+ * @ORM\Table(name="ref_modele")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\RefModeleRepository")
  */
-class Marque
+class RefModele
 {
     /**
      * @var int
@@ -27,12 +27,14 @@ class Marque
      * @ORM\Column(name="libelle", type="string", length=50)
      */
     private $libelle;
-   /**
+
+    /**
+     * @var string
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Modele")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(name="prodyear", type="string", length=50)
      */
-    private $modele;
+    private $prodyear;
+
 
     /**
      * Get id
@@ -49,7 +51,7 @@ class Marque
      *
      * @param string $libelle
      *
-     * @return Marque
+     * @return RefModele
      */
     public function setLibelle($libelle)
     {
@@ -66,6 +68,30 @@ class Marque
     public function getLibelle()
     {
         return $this->libelle;
+    }
+
+    /**
+     * Set prodyear
+     *
+     * @param string $prodyear
+     *
+     * @return RefModele
+     */
+    public function setProdyear($prodyear)
+    {
+        $this->prodyear = $prodyear;
+
+        return $this;
+    }
+
+    /**
+     * Get prodyear
+     *
+     * @return string
+     */
+    public function getProdyear()
+    {
+        return $this->prodyear;
     }
 }
 
