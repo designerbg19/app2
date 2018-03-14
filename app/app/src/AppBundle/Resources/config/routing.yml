@@ -10,3 +10,6 @@ app_region:
 app_ville:
     resource: "@AppBundle/Resources/config/routing/ville.yml"
     prefix:   /ville
+app_modepay:
+    resource: "@AppBundle/Resources/config/routing/modepay.yml"
+    prefix:   /modepay

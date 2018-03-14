@@ -1,0 +1,42 @@
+modepay:
+    path:  /
+    defaults: { _controller: "AppBundle:ModePay:index" }
+
+modepay_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:ModePay:show" }
+
+modepay_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:ModePay:new" }
+
+modepay_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:ModePay:create" }
+    requirements: { _method: post }
+
+modepay_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:ModePay:edit" }
+
+modepay_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:ModePay:update" }
+    requirements: { _method: post|put }
+
+modepay_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:ModePay:delete" }
+    requirements: { _method: post|delete }
+    
+modepay_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:ModePay:deleteById" }
+    requirements: { _method: get }
+    
+
+modepay_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:ModePay:bulk" }
+    requirements: { _method: post }
+    
