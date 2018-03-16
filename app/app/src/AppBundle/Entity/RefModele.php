@@ -35,7 +35,12 @@ class RefModele
      */
     private $prodyear;
 
-
+  /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Modele")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $modele;
     /**
      * Get id
      *
@@ -93,5 +98,26 @@ class RefModele
     {
         return $this->prodyear;
     }
+
+    /**
+     * Get the value of modele
+     */ 
+    public function getModele()
+    {
+        return $this->modele;
+    }
+
+    /**
+     * Set the value of modele
+     *
+     * @return  self
+     */ 
+    public function setModele($modele)
+    {
+        $this->modele = $modele;
+
+        return $this;
+    }
+
 }
 

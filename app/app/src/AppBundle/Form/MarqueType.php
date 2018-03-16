@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class MarqueType extends AbstractType
 {
@@ -16,6 +17,7 @@ class MarqueType extends AbstractType
     {
         $builder
             ->add('libelle')
+            
         ;
     }
     

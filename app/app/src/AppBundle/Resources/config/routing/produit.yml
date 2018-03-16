@@ -1,0 +1,42 @@
+produit:
+    path:  /
+    defaults: { _controller: "AppBundle:Produit:index" }
+
+produit_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:Produit:show" }
+
+produit_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:Produit:new" }
+
+produit_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Produit:create" }
+    requirements: { _method: post }
+
+produit_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:Produit:edit" }
+
+produit_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:Produit:update" }
+    requirements: { _method: post|put }
+
+produit_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:Produit:delete" }
+    requirements: { _method: post|delete }
+    
+produit_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:Produit:deleteById" }
+    requirements: { _method: get }
+    
+
+produit_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Produit:bulk" }
+    requirements: { _method: post }
+    

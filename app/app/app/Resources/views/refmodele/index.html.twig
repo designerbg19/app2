@@ -118,11 +118,11 @@
 
                {% import "macros/th_sortable.html.twig" as macros %}
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'refmodele')}}</th>
-                            <th>{{macros.th_sortable('libelle',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'refmodele')}}</th>
-                            <th>{{macros.th_sortable('prodyear',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'refmodele')}}</th>
-    
+                            <th>{{macros.th_sortable('reference',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'refmodele')}}</th>
+                            <th>{{macros.th_sortable('année de production',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'refmodele')}}</th>
+                            
                        
-                        <th width = "130px">List</th>
+                        <th width = "150px">List</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -132,7 +132,7 @@
                         <td><a href="{{ path('refmodele_edit', { 'id': refModele.id }) }}">{{ refModele.id }}</a></td>
                         <td>{{ refModele.libelle }}</td>
                         <td>{{ refModele.prodyear }}</td>
-    
+                       
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('refmodele_by_id_delete', { 'id': refModele.id}) }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

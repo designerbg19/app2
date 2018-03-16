@@ -127,6 +127,8 @@
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{region.id}}"/></td>
                         <td><a href="{{ path('region_edit', { 'id': region.id }) }}">{{ region.id }}</a></td>
                         <td>{{ region.nom }}</td>
+                       
+
     
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('region_by_id_delete', { 'id': region.id}) }}">

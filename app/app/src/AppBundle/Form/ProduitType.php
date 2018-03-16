@@ -4,10 +4,9 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ModeleType extends AbstractType
+class ProduitType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,15 +15,12 @@ class ModeleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('libelle')
-            ->add('Marque', EntityType::class, array(
-                'class' => 'AppBundle\Entity\Marque',
-                'choice_label' => 'libelle',
-                'placeholder' => 'Please choose',
-                'empty_data' => null,
-                'required' => false
- 
-            )) 
+            ->add('imei')
+            ->add('prixachat')
+            ->add('prixveng')
+            ->add('prixvend')
+            ->add('qte')
+            ->add('magremise')
         ;
     }
     
@@ -34,7 +30,7 @@ class ModeleType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Modele'
+            'data_class' => 'AppBundle\Entity\Produit'
         ));
     }
 }

@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{ parent() }} - New marque
+{{ parent() }} - New produit
 {% endblock %}
 
 {% block body %}
 
 <div id="top" class="row">
     <div class="page-header">
-        <h2>New marque <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
+        <h2>New produit <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
     </div>
 </div>
     
@@ -29,8 +29,6 @@
     
 
     {{ form_start(form) }}
-    
-
     {{ form_widget(form) }}
     <p>
         <button type="submit" name="submit" value="save" class="btn btn-primary"> 
@@ -47,7 +45,7 @@
     <hr/>
 
 <div class="form-group">
-    <a class="btn btn-default" href="{{ path('marque') }}">
+    <a class="btn btn-default" href="{{ path('produit') }}">
         <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
         Back to list
     </a>

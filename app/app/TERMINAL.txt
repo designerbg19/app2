@@ -1,0 +1,57 @@
+ ******************************************************************************
+composer create-project symfony/framework-standard-edition my_project_name "2.8.*"
+ ******************************************************************************
+
+ cd my_project_name/
+ php bin/console server:run
+ ******************************************************************************
+
+
+php bin/console generate:doctrine:entity
+ ******************************************************************************
+PetkoparaCrudGeneratorBundle
+ ******************************************************************************
+
+composer require petkopara/crud-generator-bundle
+php bin/console petkopara:generate:crud
+
+Register the CRUD and filter bundles in your AppKernel.php:
+
+new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+new Petkopara\MultiSearchBundle\PetkoparaMultiSearchBundle(),
+new Petkopara\CrudGeneratorBundle\PetkoparaCrudGeneratorBundle(),
+
+
+Install the assets.
+
+php bin/console assets:install --symlink
+
+
+ ******************************************************************************
+php bin/console debug:router
+******************************************************************************
+ php bin/console doctrine:schema:update --force
+
+******************************************************************************
+GIT
+******************************************************************************
+git clone link
+git status
+git add fileName
+git commit -m "text"
+git push
+git pull
+**************************************************************************
+Relation One to Many 
+************************************************************************
+php bin/console doctrine:generate:entities AppBundle
+
+**********************************************************************
+DB Drope 
+php bin/console d:d:d --force
+DB create
+php bin/console d:d:c
+
+
+appload route
+php bin/console debug:router

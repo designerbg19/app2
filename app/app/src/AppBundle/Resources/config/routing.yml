@@ -22,3 +22,6 @@ app_modele:
 app_refmodele:
     resource: "@AppBundle/Resources/config/routing/refmodele.yml"
     prefix:   /refmodele
+app_produit:
+    resource: "@AppBundle/Resources/config/routing/produit.yml"
+    prefix:   /produit

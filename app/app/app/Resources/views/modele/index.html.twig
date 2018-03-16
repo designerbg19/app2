@@ -116,9 +116,8 @@
                 {% import "macros/th_sortable.html.twig" as macros %}
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'modele')}}</th>
                             <th>{{macros.th_sortable('libelle',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'modele')}}</th>
-    
-                       
-                        <th width = "130px">List</th>
+                            
+                        <th width = "170px">List</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -127,7 +126,7 @@
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{modele.id}}"/></td>
                         <td><a href="{{ path('modele_edit', { 'id': modele.id }) }}">{{ modele.id }}</a></td>
                         <td>{{ modele.libelle }}</td>
-    
+                      
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('modele_by_id_delete', { 'id': modele.id}) }}">
                                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

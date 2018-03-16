@@ -27,12 +27,7 @@ class Marque
      * @ORM\Column(name="libelle", type="string", length=50)
      */
     private $libelle;
-   /**
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Modele")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $modele;
+
 
     /**
      * Get id
@@ -67,5 +62,7 @@ class Marque
     {
         return $this->libelle;
     }
+
+    
 }
 

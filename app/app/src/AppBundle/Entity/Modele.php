@@ -27,13 +27,13 @@ class Modele
      * @ORM\Column(name="libelle", type="string", length=50)
      */
     private $libelle;
-
-  /**
+   /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\RefModele")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Marque")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $refmodele;
+    private $marque;
+
     /**
      * Get id
      *
@@ -67,5 +67,28 @@ class Modele
     {
         return $this->libelle;
     }
+
+   
+
+    /**
+     * Get the value of marque
+     */ 
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * Set the value of marque
+     *
+     * @return  self
+     */ 
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+  
 }
 
