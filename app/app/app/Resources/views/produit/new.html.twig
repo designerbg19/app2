@@ -29,16 +29,73 @@
     
 
     {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit" name="submit" value="save" class="btn btn-primary"> 
-            Save <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-        </button>
-        <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info"> 
-            Save and Add <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </button>
-    </p>
 
+<form class="form-horizontal">
+
+    <div class="form-group">
+    
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imei">{{ form_label(form.imei,'imei') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.imei ,{'attr':{'class':'form-control' }}) }}
+        </div>
+        
+    </div>
+    
+</form>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixachat">{{ form_label(form.prixachat,'prixachat') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.prixachat ,{'attr':{'class':'form-control' }}) }}
+        </div>
+    </div>
+</form>
+
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixvend">{{ form_label(form.prixvend,'prixvend') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.prixvend ,{'attr':{'class':'form-control' }}) }}
+        </div>
+    </div>
+</form>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixveng">{{ form_label(form.prixveng,'prixveng') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.prixveng ,{'attr':{'class':'form-control' }}) }}
+        </div>
+    </div>
+</form>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qte">{{ form_label(form.qte,'qte') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.qte ,{'attr':{'class':'form-control' }}) }}
+        </div>
+    </div>
+</form>
+<form class="form-horizontal">
+   <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="magremise">{{ form_label(form.magremise,'magremise') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.magremise ,{'attr':{'class':'form-control' }}) }}
+        </div>
+    </div>
+</form>
 
     {{ form_end(form) }}
 
