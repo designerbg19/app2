@@ -28,9 +28,9 @@
 </div>
     
 
-    {{ form_start(edit_form) }}
+    {{ form_start(edit_form , {'attr':{'class':"form-horizontal" }})  }}
 
-<form class="form-horizontal">
+
     <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imei">{{ form_label(edit_form.imei,'imei') }}
             <span class="required">*</span>
@@ -39,9 +39,9 @@
             {{ form_widget(edit_form.imei ,{'attr':{'class':'form-control' }}) }}
         </div>
     </div>
-</form>
 
-<form class="form-horizontal">
+
+
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixachat">{{ form_label(edit_form.prixachat,'prixachat') }}
             <span class="required">*</span>
@@ -50,9 +50,9 @@
             {{ form_widget(edit_form.prixachat ,{'attr':{'class':'form-control' }}) }}
         </div>
     </div>
-</form>
 
-<form class="form-horizontal">
+
+
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixvend">{{ form_label(edit_form.prixvend,'prixvend') }}
             <span class="required">*</span>
@@ -61,8 +61,8 @@
             {{ form_widget(edit_form.prixvend ,{'attr':{'class':'form-control' }}) }}
         </div>
     </div>
-</form>
-<form class="form-horizontal">
+
+
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixveng">{{ form_label(edit_form.prixveng,'prixveng') }}
             <span class="required">*</span>
@@ -71,8 +71,7 @@
             {{ form_widget(edit_form.prixveng ,{'attr':{'class':'form-control' }}) }}
         </div>
     </div>
-</form>
-<form class="form-horizontal">
+
     <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qte">{{ form_label(edit_form.qte,'qte') }}
             <span class="required">*</span>
@@ -81,8 +80,8 @@
             {{ form_widget(edit_form.qte ,{'attr':{'class':'form-control' }}) }}
         </div>
     </div>
-</form>
-<form class="form-horizontal">
+
+
    <div class="form-group">
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="magremise">{{ form_label(edit_form.magremise,'magremise') }}
             <span class="required">*</span>
@@ -91,7 +90,7 @@
             {{ form_widget(edit_form.magremise ,{'attr':{'class':'form-control' }}) }}
         </div>
     </div>
-</form>
+
 
     {{ form_widget(edit_form) }}
     <p>
