@@ -1,0 +1,42 @@
+depot:
+    path:  /
+    defaults: { _controller: "AppBundle:Depot:index" }
+
+depot_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:Depot:show" }
+
+depot_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:Depot:new" }
+
+depot_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Depot:create" }
+    requirements: { _method: post }
+
+depot_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:Depot:edit" }
+
+depot_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:Depot:update" }
+    requirements: { _method: post|put }
+
+depot_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:Depot:delete" }
+    requirements: { _method: post|delete }
+    
+depot_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:Depot:deleteById" }
+    requirements: { _method: get }
+    
+
+depot_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Depot:bulk" }
+    requirements: { _method: post }
+    
