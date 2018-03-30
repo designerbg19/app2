@@ -1,0 +1,42 @@
+commande:
+    path:  /
+    defaults: { _controller: "AppBundle:Commande:index" }
+
+commande_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:Commande:show" }
+
+commande_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:Commande:new" }
+
+commande_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:Commande:create" }
+    requirements: { _method: post }
+
+commande_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:Commande:edit" }
+
+commande_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:Commande:update" }
+    requirements: { _method: post|put }
+
+commande_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:Commande:delete" }
+    requirements: { _method: post|delete }
+    
+commande_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:Commande:deleteById" }
+    requirements: { _method: get }
+    
+
+commande_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:Commande:bulk" }
+    requirements: { _method: post }
+    

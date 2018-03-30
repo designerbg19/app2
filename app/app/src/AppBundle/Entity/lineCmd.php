@@ -36,6 +36,19 @@ class lineCmd
     private $prixTotal;
 
 
+        /**
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Produit")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Produit;
+    
+        /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Commande")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Commande;
     /**
      * Get id
      *
@@ -92,6 +105,46 @@ class lineCmd
     public function getPrixTotal()
     {
         return $this->prixTotal;
+    }
+
+    /**
+     * Get the value of Produit
+     */ 
+    public function getProduit()
+    {
+        return $this->Produit;
+    }
+
+    /**
+     * Set the value of Produit
+     *
+     * @return  self
+     */ 
+    public function setProduit($Produit)
+    {
+        $this->Produit = $Produit;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Commande
+     */ 
+    public function getCommande()
+    {
+        return $this->Commande;
+    }
+
+    /**
+     * Set the value of Commande
+     *
+     * @return  self
+     */ 
+    public function setCommande($Commande)
+    {
+        $this->Commande = $Commande;
+
+        return $this;
     }
 }
 

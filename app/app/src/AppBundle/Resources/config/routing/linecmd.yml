@@ -1,0 +1,42 @@
+linecmd:
+    path:  /
+    defaults: { _controller: "AppBundle:lineCmd:index" }
+
+linecmd_show:
+    path:  /{id}/show
+    defaults: { _controller: "AppBundle:lineCmd:show" }
+
+linecmd_new:
+    path:  /new
+    defaults: { _controller: "AppBundle:lineCmd:new" }
+
+linecmd_create:
+    path:  /create
+    defaults: { _controller: "AppBundle:lineCmd:create" }
+    requirements: { _method: post }
+
+linecmd_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "AppBundle:lineCmd:edit" }
+
+linecmd_update:
+    path:  /{id}/update
+    defaults: { _controller: "AppBundle:lineCmd:update" }
+    requirements: { _method: post|put }
+
+linecmd_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "AppBundle:lineCmd:delete" }
+    requirements: { _method: post|delete }
+    
+linecmd_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "AppBundle:lineCmd:deleteById" }
+    requirements: { _method: get }
+    
+
+linecmd_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "AppBundle:lineCmd:bulk" }
+    requirements: { _method: post }
+    

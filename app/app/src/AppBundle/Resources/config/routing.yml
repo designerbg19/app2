@@ -22,9 +22,15 @@ app_modele:
 app_refmodele:
     resource: "@AppBundle/Resources/config/routing/refmodele.yml"
     prefix:   /refmodele
-app_produit:
-    resource: "@AppBundle/Resources/config/routing/produit.yml"
-    prefix:   /produit
 app_depot:
     resource: "@AppBundle/Resources/config/routing/depot.yml"
     prefix:   /depot
+app_produit:
+    resource: "@AppBundle/Resources/config/routing/produit.yml"
+    prefix:   /produit
+app_linecmd:
+    resource: "@AppBundle/Resources/config/routing/linecmd.yml"
+    prefix:   /linecmd
+app_commande:
+    resource: "@AppBundle/Resources/config/routing/commande.yml"
+    prefix:   /commande
