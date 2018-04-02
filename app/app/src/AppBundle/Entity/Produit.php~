@@ -70,7 +70,6 @@ class Produit
    
  private $refmodel;
 
-
     /**
      * Get id
      *
@@ -224,28 +223,5 @@ class Produit
     {
         return $this->magremise;
     }
-
-    /**
-     * Set refmodel
-     *
-     * @param \AppBundle\Entity\RefModele $refmodel
-     *
-     * @return Produit
-     */
-    public function setRefmodel(\AppBundle\Entity\RefModele $refmodel)
-    {
-        $this->refmodel = $refmodel;
-
-        return $this;
-    }
-
-    /**
-     * Get refmodel
-     *
-     * @return \AppBundle\Entity\RefModele
-     */
-    public function getRefmodel()
-    {
-        return $this->refmodel;
-    }
 }
+

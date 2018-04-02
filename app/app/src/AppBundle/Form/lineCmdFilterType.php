@@ -15,17 +15,17 @@ class lineCmdFilterType extends AbstractType
     {
         $builder
             ->add('id', Filters\NumberFilterType::class)
-            ->add('qte', Filters\NumberFilterType::class)
-            ->add('prixTotal', Filters\TextFilterType::class)
-        
+                   
             ->add('Produit', Filters\EntityFilterType::class, array(
                     'class' => 'AppBundle\Entity\Produit',
                     'choice_label' => 'imei',
             )) 
             ->add('Commande', Filters\EntityFilterType::class, array(
                     'class' => 'AppBundle\Entity\Commande',
-                    'choice_label' => 'tva',
+                    'choice_label' => 'numCmd',
             )) 
+            ->add('qte', Filters\NumberFilterType::class)
+            ->add('prixTotal', Filters\TextFilterType::class)
         ;
         $builder->setMethod("GET");
 

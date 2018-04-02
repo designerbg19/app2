@@ -30,7 +30,7 @@ class RefModeleController extends Controller
         list($refModeles, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
-
+//echo('hell:'.$refModeles[0]);die;
         return $this->render('refmodele/index.html.twig', array(
             'refModeles' => $refModeles,
             'pagerHtml' => $pagerHtml,

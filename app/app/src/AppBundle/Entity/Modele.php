@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Modele
  *
  * @ORM\Table(name="modele")
+ *  @ORM\HasLifecycleCallbacks
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ModeleRepository")
  */
 class Modele
@@ -27,9 +28,16 @@ class Modele
      * @ORM\Column(name="libelle", type="string", length=50)
      */
     private $libelle;
+
+      /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_complet_modele", type="string", length=120)
+     */
+    private $nomCompletModele;
    /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Marque")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Marque",  fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $marque;
@@ -71,7 +79,7 @@ class Modele
    
 
     /**
-     * Get the value of marque
+     * @return 
      */ 
     public function getMarque()
     {
@@ -83,12 +91,35 @@ class Modele
      *
      * @return  self
      */ 
-    public function setMarque($marque)
+    public function setMarque(\AppBundle\Entity\Marque $marque)
     {
         $this->marque = $marque;
 
         return $this;
     }
-  
-}
 
+
+    /**
+     * Get the value of nomCompletModele
+     *
+     * @return  string
+     */ 
+    public function getNomCompletModele()
+    {
+        return $this->nomCompletModele;
+    }
+
+    /**
+     * Set the value of nomCompletModele
+     *
+     * @param  string  $nomCompletModele
+     * @ORM\PrePersist
+     * @return  self
+     */ 
+    public function setNomCompletModele()
+    {
+        $this->nomCompletModele = $this->marque->getLibelle().' '.$this->libelle;
+
+        return $this;
+    }
+}

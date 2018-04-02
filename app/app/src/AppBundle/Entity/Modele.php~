@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Marque
+ * Modele
  *
- * @ORM\Table(name="marque")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\MarqueRepository")
+ * @ORM\Table(name="modele")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ModeleRepository")
  */
-class Marque
+class Modele
 {
     /**
      * @var int
@@ -27,7 +27,12 @@ class Marque
      * @ORM\Column(name="libelle", type="string", length=50)
      */
     private $libelle;
-
+   /**
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Marque")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $marque;
 
     /**
      * Get id
@@ -44,7 +49,7 @@ class Marque
      *
      * @param string $libelle
      *
-     * @return Marque
+     * @return Modele
      */
     public function setLibelle($libelle)
     {
@@ -62,10 +67,31 @@ class Marque
     {
         return $this->libelle;
     }
-public function __toString(){
-  
-    return $this->$libelle;
-}
-    
+
+   
+
+    /**
+     * Get the value of marque
+     */ 
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * Set the value of marque
+     *
+     * @return  self
+     */ 
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
+
+        return $this;
+    }
+  public function __toString(){
+    //  echo $this->getMarque();die;
+      return $this->marque.' '.$this->libelle;
+  }
 }
 

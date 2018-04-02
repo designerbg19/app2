@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ProduitType extends AbstractType
 {
@@ -21,6 +22,14 @@ class ProduitType extends AbstractType
             ->add('prixvend')
             ->add('qte')
             ->add('magremise')
+            ->add('refmodel', EntityType::class, array(
+                'class' => 'AppBundle\Entity\RefModele',
+                'choice_label' => 'nomComplet',
+                'placeholder' => 'Please choose',
+                'empty_data' => null,
+                'required' => false
+ 
+            )) 
         ;
     }
     

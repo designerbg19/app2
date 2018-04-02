@@ -30,7 +30,7 @@ class ModeleController extends Controller
         list($modeles, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
-
+            //var_dump($modeles[0].getMarque());die('die');
         return $this->render('modele/index.html.twig', array(
             'modeles' => $modeles,
             'pagerHtml' => $pagerHtml,

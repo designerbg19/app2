@@ -56,10 +56,10 @@
                         <ul class="nav side-menu">
                             <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="{{path('commande')}}">commande </a></li>
-                                    <li><a href="{{path('linecmd')}}">linecmd </a></li>
-                                    <li><a href="{{path('depot')}}">Depot </a></li>
-                                    <li><a href="{{path('produit')}}">Produit </a></li>
+                                    <li><a href="{{path('commande')}}"><i class="fa fa-cab"></i> Commande </a></li>
+                                    <li><a href="{{path('linecmd')}}"><i class="fa fa-bars"></i> Linecmd </a></li>
+                                    <li><a href="{{path('depot')}}"> <i class="fa fa-building"></i> Depot </a></li>
+                                    <li><a href="{{path('produit')}}"><i class="fa fa-tasks"></i> Produit </a></li>
                                     <li><a href="{{path('etacmd')}}">Etat des commandes</a></li>
                                     <li><a href="{{path('modepay')}}">Mode de payments</a></li>
                                     <li><a href="{{path('ville')}}">Les Villes</a></li>
@@ -320,5 +320,7 @@
 
 <!-- Custom Theme Scripts -->
 <script src="{{ asset('build/js/custom.min.js') }}"></script>
+ <!-- jQuery autocomplete -->
+    <script src="{{ asset('vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js') }}"></script>
 </body>
 </html>

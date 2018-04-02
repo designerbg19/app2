@@ -38,8 +38,8 @@ class lineCmd
 
         /**
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Produit")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Produit")
+     *@ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $Produit;
     

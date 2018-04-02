@@ -20,7 +20,7 @@ class RefModeleType extends AbstractType
             ->add('prodyear')
             ->add('modele', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Modele',
-                'choice_label' => 'libelle',
+                'choice_label' => 'nomCompletModele',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
                 'required' => false

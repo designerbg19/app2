@@ -16,24 +16,25 @@ class lineCmdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('qte')
-            ->add('prixTotal')
-            ->add('Produit', EntityType::class, array(
-                'class' => 'AppBundle\Entity\Produit',
-                'choice_label' => 'imei',
-                'placeholder' => 'Please choose',
-                'empty_data' => null,
-                'required' => false
- 
-            )) 
+            
+        ->add('Produit', EntityType::class, array(
+            'class' => 'AppBundle\Entity\Produit',
+            'choice_label' => 'refmodel',
+            'placeholder' => 'Please choose',
+            'empty_data' => null,
+            'required' => false
+
+        )) 
             ->add('Commande', EntityType::class, array(
                 'class' => 'AppBundle\Entity\Commande',
-                'choice_label' => 'tva',
+                'choice_label' => 'numCmd',
                 'placeholder' => 'Please choose',
                 'empty_data' => null,
                 'required' => false
  
             )) 
+            ->add('qte')
+            ->add('prixTotal')
         ;
     }
     

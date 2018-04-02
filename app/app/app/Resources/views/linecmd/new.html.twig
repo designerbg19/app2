@@ -28,7 +28,56 @@
 </div>
     
 
-    {{ form_start(form) }}
+      {{ form_start(form , {'attr':{'class':"form-horizontal" }})  }}
+    
+    <div class="form-group">
+    
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Produit">{{ form_label(form.Produit,'Produit') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.Produit ,{'attr':{'class':'form-control' }}) }}
+            
+              
+            
+              
+        </div>
+        
+    </div>
+
+     <div class="form-group">
+    
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Commande">{{ form_label(form.Commande,'Commande') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.Commande ,{'attr':{'class':'form-control' }}) }}
+        </div>
+        
+    </div>
+
+     <div class="form-group">
+    
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qte">{{ form_label(form.qte,'qte') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.qte ,{'attr':{'class':'form-control' }}) }}
+        </div>
+        
+    </div>
+
+     <div class="form-group">
+    
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixTotal">{{ form_label(form.prixTotal,'prixTotal') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+      
+            {{ form_widget(form.prixTotal ,{'attr':{'class':'form-control' }}) }}
+        </div>
+        
+    </div>
     {{ form_widget(form) }}
     <p>
         <button type="submit" name="submit" value="save" class="btn btn-primary"> 

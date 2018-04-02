@@ -126,6 +126,8 @@
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{modele.id}}"/></td>
                         <td><a href="{{ path('modele_edit', { 'id': modele.id }) }}">{{ modele.id }}</a></td>
                         <td>{{ modele.libelle }}</td>
+                    
+                          {{ dump(modele.marque.libelle) }}
                       
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('modele_by_id_delete', { 'id': modele.id}) }}">

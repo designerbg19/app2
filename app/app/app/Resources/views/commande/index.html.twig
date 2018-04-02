@@ -124,10 +124,11 @@
 
                   {% import "macros/th_sortable.html.twig" as macros %}
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'commande')}}</th>
+                            <th>{{macros.th_sortable('numCmd',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'commande')}}</th>
                             <th>{{macros.th_sortable('dateCreation',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'commande')}}</th>
                             <th>{{macros.th_sortable('tva',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'commande')}}</th>
                             <th>{{macros.th_sortable('ptixTotal',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'commande')}}</th>
-                            <th>{{macros.th_sortable('numCmd',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'commande')}}</th>
+                           
     
                        
                         <th width = "150px">List</th>
@@ -138,10 +139,11 @@
                     <tr>
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{commande.id}}"/></td>
                         <td><a href="{{ path('commande_edit', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
+                        <td>{{ commande.numCmd }}</td>
                         <td>{%- if commande.dateCreation %}{{ commande.dateCreation|date('Y-m-d') }}{% endif %}</td>
                         <td>{{ commande.tva }}</td>
                         <td>{{ commande.ptixTotal }}</td>
-                        <td>{{ commande.numCmd }}</td>
+                        
     
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('commande_by_id_delete', { 'id': commande.id}) }}">

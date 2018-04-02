@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * RefModele
- *
+ * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="ref_modele")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\RefModeleRepository")
  */
@@ -28,6 +28,14 @@ class RefModele
      */
     private $libelle;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_complet", type="string", length=150)
+     */
+    private $nomComplet;
+
     /**
      * @var string
      *
@@ -37,7 +45,7 @@ class RefModele
 
   /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Modele")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Modele",  fetch="EAGER")
      * @ORM\JoinColumn(nullable=false)
      */
     private $modele;
@@ -46,6 +54,8 @@ class RefModele
      *
      * @return int
      */
+
+     
     public function getId()
     {
         return $this->id;
@@ -119,5 +129,36 @@ class RefModele
         return $this;
     }
 
+ 
+
+
+    /**
+     * Get the value of nomComplet
+     *
+     * @return  string
+     */ 
+    public function getNomComplet()
+    {
+        return $this->nomComplet;
+    }
+
+    /**
+     * Set the value of nomComplet
+     *
+     * @param  string  $nomComplet
+     * @ORM\PrePersist
+     * @return  self
+     */ 
+    public function setNomComplet()
+    {
+      //  var_dump('hello');die;
+        $this->nomComplet = $this->modele->getNomCompletModele().' '.$this->libelle;
+
+        return $this;
+    }
+    public function __toString(){
+      //  var_dump('hello');die;
+        return $this->nomComplet;
+    }
 }
 
