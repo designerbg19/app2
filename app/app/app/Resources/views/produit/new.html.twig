@@ -1,146 +1,787 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-{{ parent() }} - New produit
+    {{ parent() }} - New produit
 {% endblock %}
 
 {% block body %}
 
-<div id="top" class="row">
-    <div class="page-header">
-        <h2>New produit <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
+    <div id="top" class="row">
+        <div class="page-header">
+            <h2>New produit <span class="glyphicon glyphicon-file" aria-hidden="true"></span></h2>
+        </div>
     </div>
-</div>
-    
-    
-    
-<div class="row">
+
+
+
     <div class="row">
-    <div class="col-md-12">
-        {% for type, flashMessages in app.session.flashbag.all() %} 
-        {% for flashMessage in flashMessages %}
-        <div class="alert alert-{{ type }}">
-            {{ flashMessage|raw }}
+        <div class="row">
+            <div class="col-md-12">
+                {% for type, flashMessages in app.session.flashbag.all() %}
+                    {% for flashMessage in flashMessages %}
+                        <div class="alert alert-{{ type }}">
+                            {{ flashMessage|raw }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
         </div>
-         {% endfor %} 
-         {% endfor %} 
-    </div>
-</div>
-    
+  </div>
+<!-- Ecomerce Test Template -->
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Ajouter une nouveau produit</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
 
-   {{ form_start(form , {'attr':{'class':"form-horizontal" }})  }}
-       <div class="form-group">
-    
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="refmodel">{{ form_label(form.refmodel,'refmodel') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(form.refmodel ,{'attr':{'class':'form-control' }}) }}
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                      <div class="product-image">
+                        <img src="{{asset('images/phone-1.jpg')}}" alt="..." />
+                      </div>
+                      <div class="product_gallery">
+                        <a>
+                          <img src="{{asset('images/phone-3.jpg')}}" alt="..." />
+                        </a>
+                        <a>
+                          <img src="{{asset('images/phone-3.jpg')}}" alt="..." />
+                        </a>
+                        <a>
+                          <img src="{{asset('images/phone-4.jpg')}}" alt="..." />
+                        </a>
+                        <a>
+                          <img src="{{asset('images/phone-1.jpg')}}" alt="..." />
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
+
+                      <h3 class="prod_title">Product information</h3>
+
+                      <p>Raw denim you probably haven't heard of them jean
+                       shorts Austin. Nesciunt tofu stumptown aliqua butcher 
+                       retro keffiyeh dreamcatcher synth. Cosby sweater eu 
+                       banh mi, qui irure terr.</p>
+                      <br />
+                      <!--          Product info                                     -->
+                       <div class="x_content">
+                                        {{ form_start(form , {'attr':{'class':"form-horizontal" }}) }}
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="refmodel">{{ form_label(form.refmodel,'refmodel') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.refmodel ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="imei">{{ form_label(form.imei,'imei') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.imei ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="prixachat">{{ form_label(form.prixachat,'prixachat') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.prixachat ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="prixveng">{{ form_label(form.prixveng,'prixveng') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.prixveng ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="prixvend">{{ form_label(form.prixvend,'prixvend') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.prixvend ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="qte">{{ form_label(form.qte,'qte') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.qte ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="magremise">{{ form_label(form.magremise,'magremise') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.magremise ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                     {{ form_widget(form) }}
+                                          <p>
+                                           
+                                            <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                                Save <span class="glyphicon glyphicon-ok-circle"
+                                                           aria-hidden="true"></span>
+                                            </button>
+                                            <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                                Save and Add <span class="glyphicon glyphicon-plus"
+                                                                   aria-hidden="true"></span>
+                                            </button>
+                                        </p>
+                                {{ form_end(form) }}
+                    <!-------------------------------- END  --------------------------------------  - -->
+                    <!-------------------------------- Accer Rapide Ajouter Marque --------------------------------------  - -->
+                    
+
+                      <div class="">
+                       <h3 class="prod_title">Accer Rapide</h3>
+                       <h4> <b> Ajouter Marque</h4>
+                       {{ form_start(form_marque , {'attr':{'class':"form-horizontal" }}) }}
+
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                    for="libelle">{{ form_label(form_marque.libelle,'Marque') }}
+                                    <span class="required">*</span>
+                                    </label>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form_marque.libelle ,{'attr':{'class':'form-control' }}) }}
+                                    </div>
+                                    </div>
+                                   
+                                   
+
+                                    {{ form_widget(form_marque) }}
+                                    <p>
+                                    <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                    Save <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                                    </button>
+                                   
+                                    <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                    Save and Add <span class="glyphicon glyphicon-plus"
+                                    aria-hidden="true"></span>
+                                    </button>
+                                    </p>
+                                    
+                                    
+
+
+                                    {{ form_end(form_marque) }}
+                        
+                      </div>
+                      <br />
+
+                       <!-------------------------------- Accer Rapide Ajouter Modele --------------------------------------  - -->
+                      <div class="">
+                        <h4> <b> Ajouter Modele</h4>
+                       
+                         {{ form_start(form_modele , {'attr':{'class':"form-horizontal" }}) }}
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="libelle">{{ form_label(form_modele.libelle,'Libelle') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form_modele.libelle ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+                                        </div>
+                                      
+                                       <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="libelle">{{ form_label(form_modele.Marque,'Marque') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form_modele.Marque ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+                                        </div>
+                                  
+                                        
+                                       
+
+                                        <p>
+                                            <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                                Save <span class="glyphicon glyphicon-ok-circle"
+                                                           aria-hidden="true"></span>
+                                            </button>
+
+                                            <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                                Save and Add <span class="glyphicon glyphicon-plus"
+                                                                   aria-hidden="true"></span>
+                                            </button>
+
+                                        </p>
+
+                                        {{ form_end(form_modele) }}
+                        
+                      </div>
+                      <br />
+                         <!-------------------------------- Accer Rapide Ajouter Modele --------------------------------------  - -->
+                      <div class="">
+                        <h4> <b> Ajouter Referce Modele</h4>
+                       
+                         {{ form_start(form_refmodele , {'attr':{'class':"form-horizontal" }}) }}
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="libelle">{{ form_label(form_refmodele.libelle,'Libelle') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form_refmodele.libelle ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+                                        </div>
+                                      <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="prodyear">{{ form_label(form_refmodele.prodyear,'Prodyear') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form_refmodele.prodyear ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+                                        </div>
+                                       
+                                      <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="modele">{{ form_label(form_refmodele.modele,'Modele') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form_refmodele.modele ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+                                        </div>
+                                        
+                                        {{ form_widget(form_refmodele) }}
+
+                                        <p>
+                                            <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                                Save <span class="glyphicon glyphicon-ok-circle"
+                                                           aria-hidden="true"></span>
+                                            </button>
+
+                                            <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                                Save and Add <span class="glyphicon glyphicon-plus"
+                                                                   aria-hidden="true"></span>
+                                            </button>
+
+                                        </p>
+
+                                        {{ form_end(form_refmodele) }}
+                        
+                      </div>
+                      <br />
+                      <div class="">
+                        <h2>Size <small>Please select one</small></h2>
+                        <ul class="list-inline prod_size">
+                          <li>
+                            <button type="button" class="btn btn-default btn-xs">Small</button>
+                          </li>
+                          <li>
+                            <button type="button" class="btn btn-default btn-xs">Medium</button>
+                          </li>
+                          <li>
+                            <button type="button" class="btn btn-default btn-xs">Large</button>
+                          </li>
+                          <li>
+                            <button type="button" class="btn btn-default btn-xs">Xtra-Large</button>
+                          </li>
+                        </ul>
+                      </div>
+                      <br />
+
+                      <div class="">
+                        <div class="product_price">
+                          <h1 class="price">Ksh80.00</h1>
+                          <span class="price-tax">Ex Tax: Ksh80.00</span>
+                          <br>
+                        </div>
+                      </div>
+
+                      <div class="">
+                        <button type="button" class="btn btn-default btn-lg">Add to Cart</button>
+                        <button type="button" class="btn btn-default btn-lg">Add to Wishlist</button>
+                      </div>
+
+                      <div class="product_social">
+                        <ul class="list-inline">
+                          <li><a href="#"><i class="fa fa-facebook-square"></i></a>
+                          </li>
+                          <li><a href="#"><i class="fa fa-twitter-square"></i></a>
+                          </li>
+                          <li><a href="#"><i class="fa fa-envelope-square"></i></a>
+                          </li>
+                          <li><a href="#"><i class="fa fa-rss-square"></i></a>
+                          </li>
+                        </ul>
+                      </div>
+
+                    </div>
+
+
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-    </div>
-    <div class="form-group">
-    
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="imei">{{ form_label(form.imei,'imei') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(form.imei ,{'attr':{'class':'form-control' }}) }}
-        </div>
-        
-    </div>
-   
+        <!-- /page content -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--      <div class="x_content">
+              <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                  <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab"
+                     data-toggle="tab" aria-expanded="true">Acces rapide</a>
+                    </li>
+                    <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab"
+                     data-toggle="tab" aria-expanded="false">Profile</a>
+                    </li>
+                    <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2"
+                     data-toggle="tab" aria-expanded="false">Profile</a>
+                    </li>
+                   </ul>
+             
+                  <div id="myTabContent" class="tab-content">
+                   
+                       <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                           <p><h4><b>Pour ajouter un nouveau marque avotre stoke.</p>
+                            <!--                                                                 -->
+                            <!Modale Marque Start .........................................................>
+
+   <!--                       <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target=".bs-example-modal-lg">Add New Marque
+                          </button>
+
+
+                          <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal-dialog modal-lg">
+                                   <div class="modal-content">
+
+                                      <div class="modal-header">
+                                         <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span>
+                                         </button>
+                                         <h4 class="modal-title" id="myModalLabel">Add New Marque</h4>
+                                       </div>
+
+                                      <div class="modal-body">
+                                          {{ form_start(form_marque , {'attr':{'class':"form-horizontal" }}) }}
+
+                                          <div class="form-group">
+                                             <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="libelle">{{ form_label(form_marque.libelle,'Libelle') }}
+                                                  <span class="required">*</span>
+                                             </label>
+
+                                              <div class="col-md-6 col-sm-6 col-xs-12">
+                                                  {{ form_widget(form_marque.libelle ,{'attr':{'class':'form-control' }}) }}
+                                              </div>
+                                          </div>
+
+                                           {{ form_widget(form_marque) }}
+
+                                           <p>
+                                            <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                                Save <span class="glyphicon glyphicon-ok-circle"
+                                                           aria-hidden="true"></span>
+                                            </button>
+
+                                            <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                                Save and Add <span class="glyphicon glyphicon-plus"
+                                                                   aria-hidden="true"></span>
+                                            </button>
+
+                                            </p>
+                                     
+                                           {{ form_end(form_marque) }}
+
+                                            <div class="modal-footer">
+                                               <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                               </button>
+                                            </div>
+                                     </div>
+                                  </div>
+                             </div>
+                         </div>
+                     </div>
+
+
+                     <!--End------------------------------------------------------------------------------------------------ -->
+                    
+                  </div>
+                    
+                
+ <!--                  <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                       <p>2 Food truck fixie locavore, accusamus mcsweeney's
+                        booth letterpress, commodo enim craft beer mlkshk aliquip</p>
+                   </div>
+
+                  <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
+                        <p>3 xxFood truck fixie locavore, accusamus mcsweeney's
+                        booth letterpress, commodo enim craft beer mlkshk </p>
+                  </div>
+             
+             </div>
+         </div>
+
+
+
 
   
-    <div class="form-group">
-    
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixachat">{{ form_label(form.prixachat,'prixachat') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(form.prixachat ,{'attr':{'class':'form-control' }}) }}
+
+
+
+    <!-- Comment ------------------------------------------------------------------------------------------------------------------->
+    <!--
+        <div class="form-group">
+            <a class="btn btn-default" href="{{ path('produit') }}">
+                <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                Back to list
+            </a>
         </div>
-        
+
     </div>
-   
+    -->
+    <!--
+  <!Modale  Marque  Start .........................................................>
+                 <div class="x_content">
 
-  
-    <div class="form-group">
-    
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixveng">{{ form_label(form.prixveng,'prixveng') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(form.prixveng ,{'attr':{'class':'form-control' }}) }}
-        </div>
-        
-    </div>
-   
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target=".bs-example-modal-lg">Large modal
+                    </button>
+                   
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
 
-   
-    <div class="form-group">
-    
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prixvend">{{ form_label(form.prixvend,'prixvend') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(form.prixvend ,{'attr':{'class':'form-control' }}) }}
-        </div>
-        
-    </div>
-   
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span
+                                                aria-hidden="true">×</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                </div>
 
-   
-    <div class="form-group">
-    
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="qte">{{ form_label(form.qte,'qte') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(form.qte ,{'attr':{'class':'form-control' }}) }}
-        </div>
-        
-    </div>
-   
-   
-    <div class="form-group">
-    
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="magremise">{{ form_label(form.magremise,'magremise') }}
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            {{ form_widget(form.magremise ,{'attr':{'class':'form-control' }}) }}
-        </div>
-        
-    </div>
-   
+                                <div class="modal-body">
+                                    {{ form_start(form_marque , {'attr':{'class':"form-horizontal" }}) }}
+
+                                    <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                    for="libelle">{{ form_label(form_marque.libelle,'Libelle') }}
+                                    <span class="required">*</span>
+                                    </label>
+
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                    {{ form_widget(form_marque.libelle ,{'attr':{'class':'form-control' }}) }}
+                                    </div>
+                                    </div>
+                                   
+
+                                    {{ form_widget(form_marque) }}
+                                    <p>
+                                    <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                    Save <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                    Save and Add <span class="glyphicon glyphicon-plus"
+                                    aria-hidden="true"></span>
+                                    </button>
+                                    </p>
 
 
+                                    {{ form_end(form_marque) }}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    
+                                </div>
 
-    {{ form_widget(form) }}
-    <p>
-        <button type="submit" name="submit" value="save" class="btn btn-primary"> 
-            Save <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
-        </button>
-        <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info"> 
-            Save and Add <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </button>
-    </p>
-
-
-    {{ form_end(form) }}
-
-    <hr/>
-
-<div class="form-group">
-    <a class="btn btn-default" href="{{ path('produit') }}">
-        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-        Back to list
-    </a>
-</div>
-
-</div>
+                            </div>
+                        </div>
+                    </div>
 
 
+                </div>
+                </div>
+                <!--End------------------------------------------------------------------------------------------------ -->
+
+
+
+
+    <!--***************************************************************************-->
+    <!--                 <div class="x_content">
+                                        {{ form_start(form , {'attr':{'class':"form-horizontal" }}) }}
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="refmodel">{{ form_label(form.refmodel,'refmodel') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.refmodel ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="imei">{{ form_label(form.imei,'imei') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.imei ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="prixachat">{{ form_label(form.prixachat,'prixachat') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.prixachat ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="prixveng">{{ form_label(form.prixveng,'prixveng') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.prixveng ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="prixvend">{{ form_label(form.prixvend,'prixvend') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.prixvend ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="qte">{{ form_label(form.qte,'qte') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.qte ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="magremise">{{ form_label(form.magremise,'magremise') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form.magremise ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                     {{ form_widget(form) }}
+                                          <p>
+                                           
+                                            <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                                Save <span class="glyphicon glyphicon-ok-circle"
+                                                           aria-hidden="true"></span>
+                                            </button>
+                                            <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                                Save and Add <span class="glyphicon glyphicon-plus"
+                                                                   aria-hidden="true"></span>
+                                            </button>
+                                        </p>
+-->
+
+
+
+
+
+<!--      Start                                                                         -->
+<!--
+                        <p><h4><b>Pour ajouter un nouveau modele avotre stoke.</p>
+                        <!Modale  Start .........................................................>
+
+
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                data-target=".bs-example-modal-lg">Add New Modele
+                        </button>
+
+                        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span
+                                                    aria-hidden="true">×</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">Add New Modele</h4>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        {{ form_start(form_modele , {'attr':{'class':"form-horizontal" }}) }}
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12"
+                                                   for="libelle">{{ form_label(form_modele.libelle,'Libelle') }}
+                                                <span class="required">*</span>
+                                            </label>
+
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                {{ form_widget(form_modele.libelle ,{'attr':{'class':'form-control' }}) }}
+                                            </div>
+                                        </div>
+
+                                        {{ form_widget(form_modele) }}
+
+                                        <p>
+                                            <button type="submit" name="submit" value="save" class="btn btn-primary">
+                                                Save <span class="glyphicon glyphicon-ok-circle"
+                                                           aria-hidden="true"></span>
+                                            </button>
+
+                                            <button type="submit" name="submit" value="saveAndAdd" class="btn btn-info">
+                                                Save and Add <span class="glyphicon glyphicon-plus"
+                                                                   aria-hidden="true"></span>
+                                            </button>
+
+                                        </p>
+
+                                        {{ form_end(form_modele) }}
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+-->
+                    <!--End------------------------------------------------------------------------------------------------ -->
+                    <!--                                                                               -->
+
+                    
 {% endblock %}
 

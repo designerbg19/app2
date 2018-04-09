@@ -248,4 +248,13 @@ class Produit
     {
         return $this->refmodel;
     }
+
+       /**
+     * Set refmodel
+     *
+     * @param \AppBundle\Entity\Marque $marque
+     *
+     * @return Produit
+     */
+   
 }

@@ -28,8 +28,16 @@
 </div>
     
 
-    {{ form_start(form) }}
-    
+     {{ form_start(form , {'attr':{'class':"form-horizontal" }})  }}
+     <div class="form-group">
+        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="libelle">{{ form_label(form.libelle,'Libelle') }}
+            <span class="required">*</span>
+        </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            {{ form_widget(form.libelle ,{'attr':{'class':'form-control' }}) }}
+        </div>
+        
+    </div>
 
     {{ form_widget(form) }}
     <p>

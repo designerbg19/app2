@@ -81,7 +81,8 @@
 <div class="col-md-3">
 
             <a class="btn btn-primary h3 pull-right" href="{{ path('produit_new') }}" style="margin-bottom:10px">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New
+           
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nouveau produit
         </a>
         <a class="btn dropdown-toggle pull-right h3" data-toggle="collapse" data-target="#filters">
         Filter
@@ -130,13 +131,15 @@
 
                 {% import "macros/th_sortable.html.twig" as macros %}
                             <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('image',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('Reference',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
                             <th>{{macros.th_sortable('imei',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
-                            <th>{{macros.th_sortable('prixachat',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
-                            <th>{{macros.th_sortable('prixveng',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
-                            <th>{{macros.th_sortable('prixvend',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
-                            <th>{{macros.th_sortable('qte',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('achat',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('vend graux',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('vend detail',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('quantiter',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
                             <th>{{macros.th_sortable('magremise',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
-    
+                          
                        
                         <th width = "150px">List</th>
                     </tr>
@@ -146,12 +149,15 @@
                     <tr>
                         <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{produit.id}}"/></td>
                         <td><a href="{{ path('produit_edit', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                        <td><img src="{{asset('images/phone-4.jpg')}}" alt="..."class="imgm img-thumbnail"style= "height:15%" /></td>
+                        <td>{{ produit.refmodel }}</td>
                         <td>{{ produit.imei }}</td>
-                        <td>{{ produit.prixachat }}</td>
-                        <td>{{ produit.prixveng }}</td>
-                        <td>{{ produit.prixvend }}</td>
+                        <td>{{ produit.prixachat }} DT</td>
+                        <td>{{ produit.prixveng }} DT</td>
+                        <td>{{ produit.prixvend }} DT</td>
                         <td>{{ produit.qte }}</td>
                         <td>{{ produit.magremise }}</td>
+                        
     
                         <td class="actions">
                             <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('produit_by_id_delete', { 'id': produit.id}) }}">
