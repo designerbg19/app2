@@ -1,0 +1,421 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }} - produit index
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{{ asset('catalogue/css/core-style.css') }}">
+    <link rel="stylesheet" href="{{ asset('catalogue/style.css') }}">
+
+    <!-- Responsive CSS -->
+    <link href="{{ asset('catalogue/css/responsive.css" rel="stylesheet') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-header">
+            <h2><a href="{{ path('produit') }}">Produit</a></h2>
+        </div>
+    </div>       
+
+<!-- FILTERING -->
+<div class="col-md-12">
+    <div  id="filters" class="collapse">
+
+        <form class="well" action="{{ path('produit') }}" method="get" >
+            <div class="row">
+                 
+                    <div class="col-md-6">{{ form_row(filterForm.id) }}</div>
+
+                 
+                    <div class="col-md-6">{{ form_row(filterForm.imei) }}</div>
+
+                 
+                    <div class="col-md-6">{{ form_row(filterForm.prixachat) }}</div>
+
+                 
+                    <div class="col-md-6">{{ form_row(filterForm.prixveng) }}</div>
+
+                 
+                    <div class="col-md-6">{{ form_row(filterForm.prixvend) }}</div>
+
+                 
+                    <div class="col-md-6">{{ form_row(filterForm.qte) }}</div>
+
+                 
+                    <div class="col-md-6">{{ form_row(filterForm.magremise) }}</div>
+
+                                <div class="col-md-6">
+                    {{ form_rest(filterForm) }}
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-warning" name="filter_action" value="filter"> <span class="glyphicon glyphicon-filter" aria-hidden="true"></span> Filter</button>
+                        <button type="submit" class="btn btn-default" name="filter_action" value="reset"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Reset</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END FILTERING -->
+
+
+<div class="col-md-3 pull-left">
+        
+    <!-- PAGE SIZE -->
+    <div class="pagination form-inline ">
+        <select class = "form-control"  onchange="window.location = this.value" >
+            <option value='{{ path('produit', app.request.query.all|merge({'pcg_show': '10'})) }}' {% if app.request.get('pcg_show') == 10 %} selected {% endif %}>10</option>
+            <option value='{{ path('produit', app.request.query.all|merge({'pcg_show': '20'})) }}' {% if app.request.get('pcg_show') == 20 %} selected {% endif %}>20</option>
+            <option value='{{ path('produit', app.request.query.all|merge({'pcg_show': '50'})) }}' {% if app.request.get('pcg_show') == 50 %} selected {% endif %}>50</option>
+            <option value='{{ path('produit', app.request.query.all|merge({'pcg_show': '100'})) }}' {% if app.request.get('pcg_show') == 100 %} selected {% endif %}>100</option>
+            <option value='{{ path('produit', app.request.query.all|merge({'pcg_show': '500'})) }}' {% if app.request.get('pcg_show') == 500 %} selected {% endif %}>500</option>
+        </select>
+    </div>
+    <!-- END PAGE SIZE -->
+
+</div>
+
+<div class="col-md-6">
+
+
+</div>
+
+<div class="col-md-3">
+
+            <a class="btn btn-primary h3 pull-right" href="{{ path('produit_new') }}" style="margin-bottom:10px">
+           
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Nouveau produit
+        </a>
+        <a class="btn dropdown-toggle pull-right h3" data-toggle="collapse" data-target="#filters">
+        Filter
+        <span class="caret"></span>
+    </a>
+</div>
+
+
+
+
+
+
+
+    <div class="col-md-12">
+        {%- if form_errors(filterForm) %}
+        <div class="alert alert-block alert-error fade in form-errors">
+            {{ form_errors(filterForm) }}
+        </div>
+        {% endif %}
+    </div>
+
+</div> <!-- /#top -->
+
+
+<div class="row">
+    <div class="col-md-12">
+        {% for type, flashMessages in app.session.flashbag.all() %} 
+        {% for flashMessage in flashMessages %}
+        <div class="alert alert-{{ type }}">
+            {{ flashMessage|raw }}
+        </div>
+         {% endfor %} 
+         {% endfor %} 
+    </div>
+</div>
+    
+<!--
+<div class="row">
+
+        <div class="table-responsive col-md-12">
+        <form method="POST" id="bulk_form" action="{{ path('produit_bulk_action') }} ">
+            <table class="table table-striped table-hover table-bordered" cellspacing="0" cellpadding="0">
+                <thead>
+                    <tr>
+                        <th width="20px"><input type="checkbox" class="check-all" onclick="toggleAll(this)"></th>
+
+                {% import "macros/th_sortable.html.twig" as macros %}
+                            <th>{{macros.th_sortable('id',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('image',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('Reference',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('imei',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('achat',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('vend graux',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('vend detail',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('quantiter',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                            <th>{{macros.th_sortable('magremise',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , 'produit')}}</th>
+                          
+                       
+                        <th width = "150px">List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produit in produits %}
+                    <tr>
+                        <td><input type="checkbox" name="ids[]" onclick='bulkSubmitBtnManage();' class="check-all" value="{{produit.id}}"/></td>
+                        <td><a href="{{ path('produit_edit', { 'id': produit.id }) }}">{{ produit.id }}</a></td>
+                        <td><img src="{{asset('images/phone-4.jpg')}}" alt="..."class="imgm img-thumbnail"style= "height:15%" /></td>
+                        <td>{{ produit.refmodel }}</td>
+                        <td>{{ produit.imei }}</td>
+                        <td>{{ produit.prixachat }} DT</td>
+                        <td>{{ produit.prixveng }} DT</td>
+                        <td>{{ produit.prixvend }} DT</td>
+                        <td>{{ produit.qte }}</td>
+                        <td>{{ produit.magremise }}</td>
+                        
+    
+                        <td class="actions">
+                            <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('produit_by_id_delete', { 'id': produit.id}) }}">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </a>
+                            <a title='Show' class="btn btn-info btn-sm" href="{{ path('produit_show', { 'id': produit.id }) }}">
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            </a>
+                            <a  title='Edit' class="btn btn-primary btn-sm" href="{{ path('produit_edit', { 'id': produit.id }) }}">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            </a>
+                        </td>
+
+
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </form>
+
+
+        </div>
+</div> <!-- /#list -->
+
+
+
+
+
+
+<!--                                                                -->
+ 
+ <div class="col-12 col-md-8 col-lg-9">
+                        <div class="shop_grid_product_area">
+                            <div class="row">
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.2s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.3s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.4s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.5s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.6s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.7s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.8s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="0.9s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+
+                                <!-- Single gallery Item -->
+                                <div class="col-12 col-sm-6 col-lg-4 single_gallery_item wow fadeInUpBig" data-wow-delay="1s">
+                                    <!-- Product Image -->
+                                    <div class="product-img">
+                                        <img src="{{asset('catalogue/img/product-img/product-1.jpg')}}" alt="">
+                                        <div class="product-quicview">
+                                            <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <!-- Product Description -->
+                                    <div class="product-description">
+                                        <h4 class="product-price">$39.90</h4>
+                                        <p>Jeans midi cocktail dress</p>
+                                        <!-- Add to Cart -->
+                                        <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shop_pagination_area wow fadeInUp" data-wow-delay="1.1s">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination pagination-sm">
+                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+
+<!--                                                             -->
+   <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{{asset('catalogue/css/core-style.css')}}">
+    <link rel="stylesheet" href="{{asset('catalogue/style.css')}}">
+
+    <!-- Responsive CSS -->
+    <link href="{{asset('catalogue/css/responsive.css')}}" rel="stylesheet">
+        <!-- jQuery (Necessary for All JavaScript Plugins) -->
+    <script src="{{asset('catalogue/js/jquery/jquery-2.2.4.min.js')}}"></script>
+    <!-- Popper js -->
+    <script src="{{asset('catalogue/js/popper.min.js')}}"></script>
+    <!-- Bootstrap js -->
+    <script src="{{asset('catalogue/js/bootstrap.min.js')}}"></script>
+    <!-- Plugins js -->
+    <script src="{{asset('catalogue/js/plugins.js')}}"></script>
+    <!-- Active js -->
+    <script src="{{asset('catalogue/js/active.js')}}"></script>
+
+    
+   
+<div class="row">
+    <div class="col-md-4 pull-left">
+            <div class="pagination form-inline ">
+                <select class = "form-control" name="bulk_action" >
+                    <option value="delete">DELETE</option>
+                </select>
+                <input type="submit" id='bulkSubmitBtn' onclick="return confirm('Are you sure?')" form="bulk_form" class="form-control btn btn-danger btn-sm" disabled>
+            </div>
+    </div>
+    
+    <div class='col-md-3 pagination text-center'>
+         <p>{{totalOfRecordsString}}</p>
+    </div>
+ 
+    <div class="col-md-5 text-right">
+         {{ pagerHtml|raw }} 
+    </div>
+</div> <!-- /#bottom -->
+
+
+
+{% endblock %}
+

@@ -43,6 +43,44 @@ class ProduitController extends Controller
         ));
     }
 
+
+    public function catalogueAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('AppBundle:Produit')->createQueryBuilder('e');
+
+        list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
+        list($produits, $pagerHtml) = $this->paginator($queryBuilder, $request);
+
+        $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
+
+        return $this->render('produit/catalogue.html.twig', array(
+            'produits' => $produits,
+            'pagerHtml' => $pagerHtml,
+            'filterForm' => $filterForm->createView(),
+            'totalOfRecordsString' => $totalOfRecordsString,
+
+        ));
+    }
+    public function catalogue2Action(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('AppBundle:Produit')->createQueryBuilder('e');
+
+        list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
+        list($produits, $pagerHtml) = $this->paginator($queryBuilder, $request);
+
+        $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
+
+        return $this->render('produit/catalogue2.html.twig', array(
+            'produits' => $produits,
+            'pagerHtml' => $pagerHtml,
+            'filterForm' => $filterForm->createView(),
+            'totalOfRecordsString' => $totalOfRecordsString,
+
+        ));
+    }
+
     /**
      * Create filter form and process filter request.
      *

@@ -21,6 +21,7 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('build/css/custom.min.css') }}" rel="stylesheet">
+    {% block css %}{% endblock %}
 </head>
 
 <body class="nav-md">
@@ -345,6 +346,8 @@
         <!-- page content -->
         <div class="right_col" role="main">
             {% block body %}{% endblock %}
+            {% block new %}{% endblock %}
+
         </div>
         <!-- /page content -->
 

@@ -3114,9 +3114,10 @@ ul.project_files li a i {
     border-right: 2px solid transparent
 }
 .thumbnail .image {
-    height: 120px;
+    height: 35%;
     overflow: hidden
 }
+.caption2{padding:9px;color:#333}
 .caption {
     padding: 9px 5px;
     background: #F7F7F7

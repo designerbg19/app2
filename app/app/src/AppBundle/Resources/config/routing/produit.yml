@@ -2,6 +2,14 @@ produit:
     path:  /
     defaults: { _controller: "AppBundle:Produit:index" }
 
+produit_catalogue:
+    path:  /catalogue
+    defaults: { _controller: "AppBundle:Produit:catalogue" }
+
+produit_catalogue2:
+    path:  /catalogue2
+    defaults: { _controller: "AppBundle:Produit:catalogue2" }
+
 produit_show:
     path:  /{id}/show
     defaults: { _controller: "AppBundle:Produit:show" }
