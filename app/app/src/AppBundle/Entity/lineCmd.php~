@@ -24,7 +24,7 @@ class lineCmd
     /**
      * @var int
      *
-     * @ORM\Column(name="qte", type="integer" )
+     * @ORM\Column(name="qte", type="integer")
      */
     private $qte;
 
@@ -39,12 +39,12 @@ class lineCmd
         /**
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Produit")
-     *@ORM\JoinColumn(name="produit", referencedColumnName="id")
+     *@ORM\JoinColumn(name="id", referencedColumnName="id")
      */
     private $Produit;
     /**
      *
-     *  @ORM\ManyToOne(targetEntity="AppBundle\Entity\UserAdmin")
+     *  @ORM\OneToOne(targetEntity="AppBundle\Entity\UserAdmin")
      */
     private $user;
     /**
@@ -156,29 +156,5 @@ class lineCmd
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set etat
-     *
-     * @param string $etat
-     *
-     * @return lineCmd
-     */
-    public function setEtat($etat)
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
-
-    /**
-     * Get etat
-     *
-     * @return string
-     */
-    public function getEtat()
-    {
-        return $this->etat;
     }
 }

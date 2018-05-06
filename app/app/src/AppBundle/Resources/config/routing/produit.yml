@@ -10,6 +10,15 @@ produit_catalogue2:
     path:  /catalogue2
     defaults: { _controller: "AppBundle:Produit:catalogue2" }
 
+produit_ajouterpanier:
+    path:  /{id}/ajouterpanier
+    defaults: { _controller: "AppBundle:Produit:ajouterpanier" }
+
+produit_addtocart:
+    path:  /addtocart
+    defaults: { _controller: "AppBundle:Produit:addToCart" }
+    requirements: { _method: post }
+
 produit_show:
     path:  /{id}/show
     defaults: { _controller: "AppBundle:Produit:show" }

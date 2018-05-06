@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} - New lineCmd
+{% endblock %}
+
+{% block body %}
+    {#<div class="class=" col-md-12 col-sm-12 col-xs-12"  panel panel-success">#}
+
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Ajouter aux Panier</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Settings 1</a>
+                                </li>
+                                <li><a href="#">Settings 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <div class="product-image">
+                            <img src="{{ asset('images/phone-2.jpg') }}" alt="..."/>
+                        </div>
+
+                    </div>
+
+                    {#<form class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">#}
+
+                        <h3 class="prod_title">Product information</h3>
+                        {{ dump(produit) }}
+                        <p class="ratings">
+                            <a class="text-warning">4.0</a>
+                            <a class="text-warning" href="#"><span class="fa fa-star"></span></a>
+                            <a class="text-warning" href="#"><span class="fa fa-star"></span></a>
+                            <a class="text-warning" href="#"><span class="fa fa-star"></span></a>
+                            <a class="text-warning" href="#"><span class="fa fa-star"></span></a>
+                            <a class="text-warning" href="#"><span class="fa fa-star-o"></span></a>
+                        </p>
+                        <h1 class="">{{ produit.refmodel }}</h1>
+                        <h2 class="">{{ produit.prixvend }} DNT</h2>
+
+                        <p>The iPhone X, pronounced "iPhone 10," was introduced at Apple's September 2017 event
+                            as a classic "One more thing..." addition to the iPhone 8 and 8 Plus product lineup.
+                            According to Apple, the iPhone X represents the biggest technological leap forward since
+                            the original iPhone was introduced 10 years ago in 2007, and it sets the path for the
+                            next decade of iPhone development</p>
+                        <br/>
+                        <form name="f" action="http://localhost:8000/produit/addtocart" method="post">
+                            <div class="input-group">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-number"
+                                        onclick="moins()">
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                </button>
+                            </span>
+
+                                <input type="text" name="qte" class="form-control input-number"
+                                       value="1">
+                                <input type="hidden" name="idproduit" value="{{ produit.id }}">
+
+                                <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-number" onclick="plus()">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                            </div>
+                            <a div class="col-xs-12 bottom text-center">
+                                <button type="submit" name="addtocart" value="5" class="cart-submit">Add to cart</button>
+
+                            </a>
+                        </form>
+
+
+                    {#</div>#}
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script language="JavaScript">
+        console.log(document.getElementsByName("qte")[0].value);
+
+        function moins() {
+            if (document.getElementsByName("qte")[0].value > 1) {
+                return document.getElementsByName("qte")[0].value--;
+            }
+        }
+
+        function plus() {
+            return document.getElementsByName("qte")[0].value++;
+        }
+
+
+    </script>
+
+{% endblock %}
+

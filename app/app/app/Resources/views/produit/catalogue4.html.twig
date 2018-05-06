@@ -2,6 +2,8 @@
 
 {% block title %}
     {{ parent() }} - produit index
+
+    
 {% endblock %}
 
 {% block body %}
@@ -65,28 +67,46 @@
 
                             {% for produit in produits %}
 
-                                <div class="col-md-4 col-sm-4 col-xs-12 panel panel-success">
+                                <div class="col-md-4 col-sm-4 col-xs-12 panel panel-success" )>
                                     <div class="">
                                         <div class="col-sm-12">
                                             <div class="center">
-                                                <img src="{{ asset('images/phone-4.jpg') }}" alt=""
-                                                     class="img-responsive">
+                                                <img   src="{{ asset('images/phone-4.jpg') }}" alt="" 
+                                                     class="img-responsive" onclick="clik()" onmouseover="this.getElementsByClassName('img-responsive')[0].style.backgroundColor = 'red'";
+                                                      onmouseout="this.getElementsByClassName('img-responsive')[0].style.backgroundColor = 'green'";>
+                                            
                                             </div>
+                                 
                                             <div class="center">
-                                                <h2>Nicole Pearson</h2>
 
-                                                <p><strong>About: </strong> Web Designer / UI. </p>
+                                                <h2> {{ produit.refmodel |capitalize }} </h2>
+                                                      
+                                                      <div>
+                                                        <p><strong>Prix</strong> :  {{ produit.prixvend }} DNT </p>
+                                                        </div>
+                                              
+                                              
+                                   
+                  
+
+
+                  
+                                            
+                                           <!--     <p><strong>About: </strong> Web Designer / UI. </p>
+
                                                 <ul class="list-unstyled">
                                                     <li><i class="fa fa-building"></i> Address:</li>
                                                     <li><i class="fa fa-phone"></i> Phone #:</li>
                                                 </ul>
+                                            -->
                                             </div>
                                         </div>
+                                        
                                         <div class="col-xs-12 bottom text-center">
                                             <div class="col-xs-12 col-sm-6 emphasis">
                                                 <p class="ratings">
 
-                                                <div class="input-group">
+                                                <div class="input-group" >
                                                          <span class="input-group-btn">
                                                          <button type="button" class="btn btn-default btn-number"
                                                                  data-type="minus"
@@ -103,7 +123,7 @@
                                                     </button>
                                                    </span>
                                                 </div>
-                                                <button type="button" class="btn btn-primary btn-xs">
+                                                <button type="button" class="btn btn-primary btn-xs" >
                                                     <i class="fa fa-shopping-cart"> </i> ajouter au panier
                                                 </button>
 
@@ -117,6 +137,72 @@
 
 
                             {% endfor %}
+<style>
+html{
+  font-family: "Helvetica Neue", sans-serif;
+  width:100%;
+  color:#666666;
+  text-align:center;
+}
+
+.popup-overlay{
+  /*Hides pop-up when there is no "active" class*/
+  visibility:hidden;
+  position:absolute;
+  background:#ffffff;
+  border:3px solid #666666;
+  width:50%;
+  height:50%;
+  left:25%; 
+}
+.popup-overlay.active{
+  /*displays pop-up when "active" class is present*/
+  visibility:visible;
+  text-align:center;
+}
+
+.popup-content {
+  /*Hides pop-up content when there is no "active" class */
+ visibility:hidden;
+}
+
+.popup-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility:visible;
+}
+
+button{
+  display:inline-block;
+  vertical-align:middle;
+  border-radius:30px;
+  margin:.20rem;
+  font-size: 1rem;
+  color:#666666;
+  background:   #ffffff;
+  border:1px solid #666666;  
+}
+
+button:hover{
+  border:1px solid #666666;
+  background:#666666;
+  color:#ffffff;
+}
+
+</style>
+                           <!--Creates the popup body-->
+<div class="popup-overlay">
+  <!--Creates the popup content-->
+   <div class="popup-content">
+      <h2>Pop-Up</h2>
+      <p> This is an example pop-up that you can make using jQuery.</p>
+     <!--popup's close button-->
+      <button class="close">Close</button>    </div>
+</div>
+<!--Content shown when popup is not displayed-->
+<h2>jQuery Pop-Up Example</h2>
+<button class="open">Open</button>
+
+
 
                         </div>
                     </div>
@@ -125,7 +211,29 @@
         </div>
     </div>
 
+ 
+    
     <script language="JavaScript">
+        function clik(){
+            alert('hello');
+            //$('#myModal').modal('show')
+        }
+
+
+//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
+$(".open").on("click", function(){
+  $(".popup-overlay, .popup-content").addClass("active");
+});
+
+//removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+$(".close, .popup-overlay").on("click", function(){
+    
+  $(".popup-overlay, .popup-content").removeClass("active");
+});
+
+
+
+
         $('.btn-number').click(function (e) {
             e.preventDefault();
 

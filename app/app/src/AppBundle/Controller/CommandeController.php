@@ -39,6 +39,15 @@ class CommandeController extends Controller
 
         ));
     }
+    public function panierAction(Request $request)
+    {
+
+
+        return $this->render('commande/index.html.twig', array(
+
+
+        ));
+    }
 
     /**
     * Create filter form and process filter request.

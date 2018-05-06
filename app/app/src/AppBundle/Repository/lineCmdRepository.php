@@ -10,4 +10,18 @@ namespace AppBundle\Repository;
  */
 class lineCmdRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function cartByUser($user){
+        $quary= $this->getEntityManager()->createQueryBuilder();
+        $quary->select('sum(l.qte) as total_qte_product','sum(l.prixTotal) as prix_totale')
+            ->from('AppBundle:lineCmd','l')
+            ->where("l.etat = 'panier'")
+            ->andWhere('l.user = :id_user')
+        ->setParameter('id_user',$user);
+
+        $result = $quary->getQuery()->getScalarResult();
+        return $result;
+
+
+    }
 }

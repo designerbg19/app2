@@ -1,0 +1,7 @@
+{% extends "base.html.twig" %}
+{% block body %}
+  <p>Vous vous étes correctement authentifié </p>
+    <p>bonjour</p>
+    <p><a href="{{ path('client_page') }}">Accéder a l'espace réservé aux client</a> </p>
+    <p><a href="{{ path('admin_page') }}">Accéder a l'espace réservé aux administrateurs </a></p>
+{% endblock %}

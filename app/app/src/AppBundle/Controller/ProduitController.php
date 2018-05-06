@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\lineCmd;
 use AppBundle\Entity\Marque;
 use AppBundle\Entity\Modele;
 use AppBundle\Entity\RefModele;
@@ -66,6 +67,7 @@ class ProduitController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('AppBundle:Produit')->createQueryBuilder('e');
+        $panier = $this->getDoctrine()->getRepository(lineCmd::class)->cartByUser($this->getUser());
 
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
         list($produits, $pagerHtml) = $this->paginator($queryBuilder, $request);
@@ -73,6 +75,7 @@ class ProduitController extends Controller
         $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
 
         return $this->render('produit/catalogue2.html.twig', array(
+            'panier'=> $panier,
             'produits' => $produits,
             'pagerHtml' => $pagerHtml,
             'filterForm' => $filterForm->createView(),
@@ -80,7 +83,35 @@ class ProduitController extends Controller
 
         ));
     }
+    public function ajouterpanierAction(Produit $produit)
+    {
+        return $this->render('produit/AjouterPanier.html.twig', array('produit' => $produit
+        ));
+    }
 
+    public function addToCartAction(Request $request)
+    {
+        $qte = $request->get('qte');
+        $id=$request->get('idproduit');
+        $produit =$this->getDoctrine()->getRepository(Produit::class)->find($id);
+        $user =$this->getUser();
+        $prixtotal=$qte*(float)$produit->getPrixvend();
+        //dump($prixtotal);die;
+        //dump($qte,$id , $produit,$user);die;
+        $lncmd = new lineCmd();
+        $lncmd->setQte($qte);
+        $lncmd->setProduit($produit);
+        $lncmd->setUser($user);
+        $lncmd->setPrixTotal($prixtotal);
+        $lncmd->setEtat('panier');
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($lncmd);
+        $em->flush();
+
+
+        return $this->redirectToRoute('produit_catalogue2');
+    }
+   
     /**
      * Create filter form and process filter request.
      *
@@ -297,6 +328,7 @@ class ProduitController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
 
     /**
